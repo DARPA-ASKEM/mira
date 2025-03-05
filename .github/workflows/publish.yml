@@ -43,7 +43,7 @@ jobs:
       - name: Create image and push
         uses: docker/build-push-action@v6
         with:
-          context: docker
+          context: ./docker
           platforms: linux/amd64
           push: true
           tags: ${{ needs.image-tag.outputs.tagged-image-name }}--amd64
@@ -65,7 +65,7 @@ jobs:
       - name: Create image and push
         uses: docker/build-push-action@v6
         with:
-          context: docker
+          context: ./docker
           platforms: linux/arm64
           push: true
           tags: ${{ needs.image-tag.outputs.tagged-image-name }}--arm64
