@@ -33,9 +33,3 @@ jobs:
         run: |
           docker manifest inspect ${{ inputs.name }}
           docker manifest push ${{ inputs.name }}
-
-      - name: Delete the AMD64 and ARM64 manifest
-        continue-on-error: true
-        run: |
-          docker manifest rm ${{ inputs.name }}--amd64
-          docker manifest rm ${{ inputs.name }}--arm64
