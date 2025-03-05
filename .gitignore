@@ -137,3 +137,9 @@ docker/nodes.tsv.gz
 docker/embeddings.tsv.gz
 mira/dkg/resources/ncit.obo
 docker/epi.sh
+
+# IntelliJ
+.idea/*
+*.ipr
+*.iml
+*.iws
