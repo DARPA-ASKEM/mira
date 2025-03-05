@@ -17,7 +17,6 @@ concurrency:
   group: build-and-publish
   cancel-in-progress: true
 
-
 jobs:
   # Call the Tag Generator to generate an image tag to use
   image-tag:
@@ -40,6 +39,9 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+
       - name: Create image and push
         uses: docker/build-push-action@v6
         with:
@@ -61,6 +63,10 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout the repository
+        uses:
+          actions/checkout@v4
 
       - name: Create image and push
         uses: docker/build-push-action@v6
