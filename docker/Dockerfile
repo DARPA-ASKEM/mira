@@ -32,7 +32,7 @@ RUN wget -O /sw/nodes.tsv.gz https://askem-mira.s3.amazonaws.com/dkg/$domain/bui
 
 # Python packages
 RUN python -m pip install --upgrade pip && \
-    python -m pip install git+https://github.com/gyorilab/mira.git@main#egg=mira[web,uvicorn,dkg-client,dkg-construct] && \
+    python -m pip install git+https://github.com/DARPA-ASKEM/mira.git@main#egg=mira[web,uvicorn,dkg-client,dkg-construct] && \
     python -m pip uninstall -y flask_bootstrap && \
     python -m pip uninstall -y bootstrap_flask && \
     python -m pip install bootstrap_flask && \
@@ -43,7 +43,7 @@ RUN python -m pip install --upgrade pip && \
 RUN python -m mira.dkg.generate_obo_graphs
 
 # Copy the example json for reconstructing the ode semantics
-RUN wget -O /sw/sir_flux_span.json https://raw.githubusercontent.com/gyorilab/mira/main/tests/sir_flux_span.json
+RUN wget -O /sw/sir_flux_span.json https://raw.githubusercontent.com/DARPA-ASKEM/mira/main/tests/sir_flux_span.json
 
 COPY startup.sh startup.sh
 ENTRYPOINT ["/bin/bash", "/sw/startup.sh"]
